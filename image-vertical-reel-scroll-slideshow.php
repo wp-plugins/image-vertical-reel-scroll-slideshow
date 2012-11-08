@@ -5,7 +5,7 @@ Plugin Name: Image vertical reel scroll slideshow
 Plugin URI: http://www.gopiplus.com/work/2011/05/30/wordpress-plugin-image-vertical-reel-scroll-slideshow/
 Description: Image vertical reel scroll slideshow wordpress plugin will create the vertical scroll slideshow on the website. This will create the slideshow like reel. The images will scroll one by one from bottom to top. Each slide can be optionally hyper linked.
 Author: Gopi.R
-Version: 6.0
+Version: 6.1
 Author URI: http://www.gopiplus.com/work/
 Donate link: http://www.gopiplus.com/work/2011/05/30/wordpress-plugin-image-vertical-reel-scroll-slideshow/
 Tags: vertical, image, reel, scroll, slideshow, gallery
