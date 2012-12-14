@@ -17,7 +17,6 @@
  *     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-
 function ivrss_submit()
 {
 	if(document.ivrss_form.ivrss_path.value=="")
