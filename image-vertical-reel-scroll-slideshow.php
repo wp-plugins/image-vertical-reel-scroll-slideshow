@@ -5,7 +5,7 @@ Plugin Name: Image vertical reel scroll slideshow
 Plugin URI: http://www.gopiplus.com/work/2011/05/30/wordpress-plugin-image-vertical-reel-scroll-slideshow/
 Description: Image vertical reel scroll slideshow wordpress plugin will create the vertical scroll slideshow on the website. This will create the slideshow like reel. The images will scroll one by one from bottom to top. Each slide can be optionally hyper linked.
 Author: Gopi.R
-Version: 6.2
+Version: 7.0
 Author URI: http://www.gopiplus.com/work/
 Donate link: http://www.gopiplus.com/work/2011/05/30/wordpress-plugin-image-vertical-reel-scroll-slideshow/
 Tags: vertical, image, reel, scroll, slideshow, gallery
@@ -15,6 +15,10 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 global $wpdb, $wp_version;
 define("WP_ivrss_TABLE", $wpdb->prefix . "ivrss_plugin");
+define("WP_ivrss_UNIQUE_NAME", "ivrss");
+define("WP_ivrss_TITLE", "Image vertical reel scroll slideshow");
+define('WP_ivrss_LINK', 'Check official website for more information <a target="_blank" href="http://www.gopiplus.com/work/2011/05/30/wordpress-plugin-image-vertical-reel-scroll-slideshow/">click here</a>');
+define('WP_ivrss_FAV', 'http://www.gopiplus.com/work/2011/05/30/wordpress-plugin-image-vertical-reel-scroll-slideshow/');
 
 function ivrss() 
 {
@@ -142,16 +146,16 @@ function ivrss_install()
 		
 		$IsSql = "INSERT INTO `". WP_ivrss_TABLE . "` (`ivrss_path`, `ivrss_link`, `ivrss_target` , `ivrss_title` , `ivrss_order` , `ivrss_status` , `ivrss_type` , `ivrss_date`)"; 
 		
-		$sSql = $IsSql . " VALUES ('".get_option('siteurl')."/wp-content/plugins/image-vertical-reel-scroll-slideshow/images/250x167_1.jpg', '#', '_self', 'Image 1', '1', 'YES', 'gallery1', '0000-00-00 00:00:00');";
+		$sSql = $IsSql . " VALUES ('".get_option('siteurl')."/wp-content/plugins/image-vertical-reel-scroll-slideshow/images/250x167_1.jpg', '#', '_self', 'Image 1', '1', 'YES', 'GROUP1', '0000-00-00 00:00:00');";
 		$wpdb->query($sSql);
 		
-		$sSql = $IsSql . " VALUES ('".get_option('siteurl')."/wp-content/plugins/image-vertical-reel-scroll-slideshow/images/250x167_2.jpg' ,'#', '_self', 'Image 2', '2', 'YES', 'gallery1', '0000-00-00 00:00:00');";
+		$sSql = $IsSql . " VALUES ('".get_option('siteurl')."/wp-content/plugins/image-vertical-reel-scroll-slideshow/images/250x167_2.jpg' ,'#', '_self', 'Image 2', '2', 'YES', 'GROUP1', '0000-00-00 00:00:00');";
 		$wpdb->query($sSql);
 		
-		$sSql = $IsSql . " VALUES ('".get_option('siteurl')."/wp-content/plugins/image-vertical-reel-scroll-slideshow/images/250x167_3.jpg', '#', '_self', 'Image 3', '1', 'YES', 'gallery1', '0000-00-00 00:00:00');";
+		$sSql = $IsSql . " VALUES ('".get_option('siteurl')."/wp-content/plugins/image-vertical-reel-scroll-slideshow/images/250x167_3.jpg', '#', '_self', 'Image 3', '1', 'YES', 'Widget', '0000-00-00 00:00:00');";
 		$wpdb->query($sSql);
 		
-		$sSql = $IsSql . " VALUES ('".get_option('siteurl')."/wp-content/plugins/image-vertical-reel-scroll-slideshow/images/250x167_4.jpg', '#', '_self', 'Image 4', '2', 'YES', 'gallery1', '0000-00-00 00:00:00');";
+		$sSql = $IsSql . " VALUES ('".get_option('siteurl')."/wp-content/plugins/image-vertical-reel-scroll-slideshow/images/250x167_4.jpg', '#', '_self', 'Image 4', '2', 'YES', 'Widget', '0000-00-00 00:00:00');";
 		$wpdb->query($sSql);
 
 	}
@@ -159,13 +163,12 @@ function ivrss_install()
 	add_option('ivrss_scrollercount', "2");
 	add_option('ivrss_scrollerheight', "170");
 	add_option('ivrss_random', "YES");
-	add_option('ivrss_type', "gallery1");
+	add_option('ivrss_type', "GROUP1");
 }
 
 function ivrss_control() 
 {
-	echo '<p>Image vertical reel scroll slideshow.<br><br> To change the setting goto "Image vertical reel scroll slideshow" link under SETTING menu. ';
-	echo '<a href="options-general.php?page=image-vertical-reel-scroll-slideshow/image-vertical-reel-scroll-slideshow.php">click here</a></p>';
+	echo '<p>Image vertical reel scroll slideshow.<br><br> To change the setting goto <b>Image vertical reel scroll slideshow</b> link under Settings menu. ';
 }
 
 function ivrss_widget($args) 
@@ -181,60 +184,22 @@ function ivrss_widget($args)
 function ivrss_admin_options() 
 {
 	global $wpdb;
-	
-	echo "<div class='wrap'>";
-	echo "<h2>Image vertical reel scroll slideshow</h2>"; 
-
-	$ivrss_title = get_option('ivrss_title');
-	$ivrss_scrollercount = get_option('ivrss_scrollercount');
-	$ivrss_scrollerheight = get_option('ivrss_scrollerheight');
-	$ivrss_random = get_option('ivrss_random');
-	$ivrss_type = get_option('ivrss_type');
-	
-	if (@$_POST['ivrss_submit']) 
+	$current_page = isset($_GET['ac']) ? $_GET['ac'] : '';
+	switch($current_page)
 	{
-		$ivrss_title = stripslashes($_POST['ivrss_title']);
-		$ivrss_scrollercount = stripslashes($_POST['ivrss_scrollercount']);
-		$ivrss_scrollerheight = stripslashes($_POST['ivrss_scrollerheight']);
-		$ivrss_random = stripslashes($_POST['ivrss_random']);
-		$ivrss_type = stripslashes($_POST['ivrss_type']);
-
-		update_option('ivrss_title', $ivrss_title );
-		update_option('ivrss_scrollercount', $ivrss_scrollercount );
-		update_option('ivrss_scrollerheight', $ivrss_scrollerheight );
-		update_option('ivrss_random', $ivrss_random );
-		update_option('ivrss_type', $ivrss_type );
+		case 'edit':
+			include('pages/image-management-edit.php');
+			break;
+		case 'add':
+			include('pages/image-management-add.php');
+			break;
+		case 'set':
+			include('pages/image-setting.php');
+			break;
+		default:
+			include('pages/image-management-show.php');
+			break;
 	}
-	
-	echo '<form name="ivrss_form" method="post" action="">';
-
-	echo '<p>Title:<br><input  style="width: 450px;" maxlength="200" type="text" value="';
-	echo $ivrss_title . '" name="ivrss_title" id="ivrss_title" /> Widget title.</p>';
-
-	echo '<p>No of images you want to display at the same time :<br><input  style="width: 100px;" maxlength="200" type="text" value="';
-	echo $ivrss_scrollercount . '" name="ivrss_scrollercount" id="ivrss_scrollercount" /> (only number).</p>';
-
-	echo '<p>Height of each image :<br><input  style="width: 100px;" maxlength="200" type="text" value="';
-	echo $ivrss_scrollerheight . '" name="ivrss_scrollerheight" id="ivrss_scrollerheight" /> (only number).</p>';
-
-	echo '<p>Random order:<br><input  style="width: 100px;" type="text" value="';
-	echo $ivrss_random . '" name="ivrss_random" id="ivrss_random" /> (YES/NO)</p>';
-
-	echo '<p>Gallery type :<br><input  style="width: 150px;" type="text" value="';
-	echo $ivrss_type . '" name="ivrss_type" id="ivrss_type" /> This field is to group the images for gallery.</p>';
-
-	echo '<input name="ivrss_submit" id="ivrss_submit" class="button-primary" value="Submit" type="submit" />';
-
-	echo '</form>';
-	
-	echo '</div>';
-	?>
-<div style="float:right;">
-  <input name="text_management1" lang="text_management" class="button-primary" onClick="location.href='options-general.php?page=image-vertical-reel-scroll-slideshow/image-management.php'" value="Go to - Image Management" type="button" />
-  <input name="setting_management1" lang="setting_management" class="button-primary" onClick="location.href='options-general.php?page=image-vertical-reel-scroll-slideshow/image-vertical-reel-scroll-slideshow.php'" value="Go to - Gallery Setting" type="button" />
-</div>
-<?php
-	include("help.php");
 }
 
 add_shortcode( 'ivrss-gallery', 'ivrss_shortcode' );
@@ -246,16 +211,6 @@ function ivrss_shortcode( $atts )
 	$ivrss = "";
 	$ivrss_html = "";
 	$ivrss_js = "";
-	
-	// Old code
-	//$scode = $matches[1];
-	//list($ivrss_type_main, $ivrss_scrollercount_main, $ivrss_scrollerheight_main, $ivrss_random_main) = split("[:.-]", $scode);
-	//[IVRSS_GALLERY:TYPE=gallery1:DISPLAY=2:HEIGHT=170:RANDOM=YES]
-	
-	//list($ivrss_type_cap, $ivrss_type) = split('[=.-]', $ivrss_type_main);
-	//list($ivrss_scrollercount_cap, $ivrss_scrollercount) = split('[=.-]', $ivrss_scrollercount_main);
-	//list($ivrss_scrollerheight_cap, $ivrss_scrollerheight) = split('[=.-]', $ivrss_scrollerheight_main);
-	//list($ivrss_random_cap, $ivrss_random) = split('[=.-]', $ivrss_random_main);
 	
 	// New code
 	//[ivrss-gallery type="gallery1" display="2" height="170" random="YES"]
@@ -347,8 +302,7 @@ function ivrss_add_to_menu()
 {
 	if (is_admin()) 
 	{
-		add_options_page('Image vertical reel scroll slideshow', 'Image vertical reel scroll slideshow', 'manage_options', __FILE__, 'ivrss_admin_options' );
-		add_options_page('Image vertical reel scroll slideshow', '', 'manage_options', "image-vertical-reel-scroll-slideshow/image-management.php",'' );
+		add_options_page('Image vertical reel scroll slideshow', 'Image vertical reel scroll slideshow', 'manage_options', "image-vertical-reel-scroll-slideshow", 'ivrss_admin_options' );
 	}
 }
 
