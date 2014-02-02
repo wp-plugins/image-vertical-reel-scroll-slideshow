@@ -1,11 +1,10 @@
 <?php
-
 /*
 Plugin Name: Image vertical reel scroll slideshow
 Plugin URI: http://www.gopiplus.com/work/2011/05/30/wordpress-plugin-image-vertical-reel-scroll-slideshow/
 Description: Image vertical reel scroll slideshow wordpress plugin will create the vertical scroll slideshow on the website. This will create the slideshow like reel. The images will scroll one by one from bottom to top. Each slide can be optionally hyper linked.
 Author: Gopi.R
-Version: 7.0
+Version: 7.1
 Author URI: http://www.gopiplus.com/work/
 Donate link: http://www.gopiplus.com/work/2011/05/30/wordpress-plugin-image-vertical-reel-scroll-slideshow/
 Tags: vertical, image, reel, scroll, slideshow, gallery
@@ -15,14 +14,22 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 global $wpdb, $wp_version;
 define("WP_ivrss_TABLE", $wpdb->prefix . "ivrss_plugin");
-define("WP_ivrss_UNIQUE_NAME", "ivrss");
-define("WP_ivrss_TITLE", "Image vertical reel scroll slideshow");
-define('WP_ivrss_LINK', 'Check official website for more information <a target="_blank" href="http://www.gopiplus.com/work/2011/05/30/wordpress-plugin-image-vertical-reel-scroll-slideshow/">click here</a>');
 define('WP_ivrss_FAV', 'http://www.gopiplus.com/work/2011/05/30/wordpress-plugin-image-vertical-reel-scroll-slideshow/');
+
+if ( ! defined( 'WP_ivrss_BASENAME' ) )
+	define( 'WP_ivrss_BASENAME', plugin_basename( __FILE__ ) );
+	
+if ( ! defined( 'WP_ivrss_PLUGIN_NAME' ) )
+	define( 'WP_ivrss_PLUGIN_NAME', trim( dirname( WP_ivrss_BASENAME ), '/' ) );
+	
+if ( ! defined( 'WP_ivrss_PLUGIN_URL' ) )
+	define( 'WP_ivrss_PLUGIN_URL', WP_PLUGIN_URL . '/' . WP_ivrss_PLUGIN_NAME );
+	
+if ( ! defined( 'WP_ivrss_ADMIN_URL' ) )
+	define( 'WP_ivrss_ADMIN_URL', get_option('siteurl') . '/wp-admin/options-general.php?page=image-vertical-reel-scroll-slideshow' );
 
 function ivrss() 
 {
-	
 	global $wpdb;
 	$ivrss_html = "";
 	$ivrss_js = "";
@@ -67,7 +74,6 @@ function ivrss()
 			$ivrss_target = $data->ivrss_target;
 
 			$dis_height = $ivrss_scrollerheight."px";
-			
 			$ivrss_html = $ivrss_html . "<div class='cas_div' style='height:$dis_height;padding:2px 0px 2px 0px;'>"; 
 			$ivrss_html = $ivrss_html . "<a style='text-decoration:none' target='$ivrss_target' class='cas_div' href='$ivrss_link'><img border='0' src='$ivrss_path'></a>";
 			$ivrss_html = $ivrss_html . "</div>";
@@ -100,14 +106,14 @@ function ivrss()
         var ivrss_obj	= '';
         var ivrss_scrollPos 	= '';
         var ivrss_numScrolls	= '';
-        var ivrss_heightOfElm = '<?php echo $ivrss_scrollerheight; ?>'; // Height of each element (px)
+        var ivrss_heightOfElm = '<?php echo $ivrss_scrollerheight; ?>';
         var ivrss_numberOfElm = '<?php echo $ivrss_count; ?>';
         var ivrss_scrollOn 	= 'true';
         function ivrss_createscroll() 
         {
             <?php echo $ivrss_js; ?>
             ivrss_obj	= document.getElementById('ivrss_holder1');
-            ivrss_obj.style.height = (ivrss_numberOfElm * ivrss_heightOfElm) + 'px'; // Set height of DIV
+            ivrss_obj.style.height = (ivrss_numberOfElm * ivrss_heightOfElm) + 'px';
             ivrss_content();
         }
         </script>
@@ -141,21 +147,21 @@ function ivrss_install()
 		$sSql = $sSql . "`ivrss_extra2` VARCHAR( 100 ) NOT NULL ,";
 		$sSql = $sSql . "`ivrss_date` datetime NOT NULL default '0000-00-00 00:00:00' ,";
 		$sSql = $sSql . "PRIMARY KEY ( `ivrss_id` )";
-		$sSql = $sSql . ")";
+		$sSql = $sSql . ") ENGINE=MyISAM  DEFAULT CHARSET=utf8;";
 		$wpdb->query($sSql);
 		
-		$IsSql = "INSERT INTO `". WP_ivrss_TABLE . "` (`ivrss_path`, `ivrss_link`, `ivrss_target` , `ivrss_title` , `ivrss_order` , `ivrss_status` , `ivrss_type` , `ivrss_date`)"; 
+		$IsSql = "INSERT INTO ". WP_ivrss_TABLE . " (ivrss_path, ivrss_link, ivrss_target, ivrss_title, ivrss_order, ivrss_status, ivrss_type, ivrss_date)"; 
 		
-		$sSql = $IsSql . " VALUES ('".get_option('siteurl')."/wp-content/plugins/image-vertical-reel-scroll-slideshow/images/250x167_1.jpg', '#', '_self', 'Image 1', '1', 'YES', 'GROUP1', '0000-00-00 00:00:00');";
+		$sSql = $IsSql . " VALUES ('".WP_ivrss_PLUGIN_URL."/images/250x167_1.jpg', '#', '_self', 'Image 1', '1', 'YES', 'GROUP1', '0000-00-00 00:00:00');";
 		$wpdb->query($sSql);
 		
-		$sSql = $IsSql . " VALUES ('".get_option('siteurl')."/wp-content/plugins/image-vertical-reel-scroll-slideshow/images/250x167_2.jpg' ,'#', '_self', 'Image 2', '2', 'YES', 'GROUP1', '0000-00-00 00:00:00');";
+		$sSql = $IsSql . " VALUES ('".WP_ivrss_PLUGIN_URL."/images/250x167_2.jpg' ,'#', '_self', 'Image 2', '2', 'YES', 'GROUP1', '0000-00-00 00:00:00');";
 		$wpdb->query($sSql);
 		
-		$sSql = $IsSql . " VALUES ('".get_option('siteurl')."/wp-content/plugins/image-vertical-reel-scroll-slideshow/images/250x167_3.jpg', '#', '_self', 'Image 3', '1', 'YES', 'Widget', '0000-00-00 00:00:00');";
+		$sSql = $IsSql . " VALUES ('".WP_ivrss_PLUGIN_URL."/images/250x167_3.jpg', '#', '_self', 'Image 3', '1', 'YES', 'Widget', '0000-00-00 00:00:00');";
 		$wpdb->query($sSql);
 		
-		$sSql = $IsSql . " VALUES ('".get_option('siteurl')."/wp-content/plugins/image-vertical-reel-scroll-slideshow/images/250x167_4.jpg', '#', '_self', 'Image 4', '2', 'YES', 'Widget', '0000-00-00 00:00:00');";
+		$sSql = $IsSql . " VALUES ('".WP_ivrss_PLUGIN_URL."/images/250x167_4.jpg', '#', '_self', 'Image 4', '2', 'YES', 'Widget', '0000-00-00 00:00:00');";
 		$wpdb->query($sSql);
 
 	}
@@ -168,7 +174,11 @@ function ivrss_install()
 
 function ivrss_control() 
 {
-	echo '<p>Image vertical reel scroll slideshow.<br><br> To change the setting goto <b>Image vertical reel scroll slideshow</b> link under Settings menu. ';
+	echo '<p><b>';
+	_e('Image vertical reel scroll slideshow', 'vertical-reel');
+	echo '.</b> ';
+	_e('Check official website for more information', 'vertical-reel');
+	?> <a target="_blank" href="<?php echo WP_ivrss_FAV; ?>"><?php _e('click here', 'vertical-reel'); ?></a></p><?php
 }
 
 function ivrss_widget($args) 
@@ -293,7 +303,7 @@ function ivrss_shortcode( $atts )
 	}
 	else
 	{
-		$ivrss = "No image availabe for the mentioned group! please check the short code.";
+		$ivrss = __('No image availabe for the mentioned group! please check the short code.', 'vertical-reel');
 	}
 	return $ivrss;
 }
@@ -302,7 +312,8 @@ function ivrss_add_to_menu()
 {
 	if (is_admin()) 
 	{
-		add_options_page('Image vertical reel scroll slideshow', 'Image vertical reel scroll slideshow', 'manage_options', "image-vertical-reel-scroll-slideshow", 'ivrss_admin_options' );
+		add_options_page(__('Image vertical reel scroll slideshow', 'vertical-reel'), 
+					__('Image vertical reel scroll slideshow', 'vertical-reel'), 'manage_options', "image-vertical-reel-scroll-slideshow", 'ivrss_admin_options' );
 	}
 }
 
@@ -310,28 +321,34 @@ function ivrss_init()
 {
 	if(function_exists('wp_register_sidebar_widget')) 
 	{
-		wp_register_sidebar_widget('Image-vertical-reel-scroll-slideshow', 'Image vertical reel scroll slideshow', 'ivrss_widget');
+		wp_register_sidebar_widget('Image-vertical-reel-scroll-slideshow', __('Image vertical reel scroll slideshow', 'vertical-reel'), 'ivrss_widget');
 	}
 	
 	if(function_exists('wp_register_widget_control')) 
 	{
-		wp_register_widget_control('Image-vertical-reel-scroll-slideshow', array('Image vertical reel scroll slideshow', 'widgets'), 'ivrss_control');
+		wp_register_widget_control('Image-vertical-reel-scroll-slideshow', array(__('Image vertical reel scroll slideshow', 'vertical-reel'), 'widgets'), 'ivrss_control');
 	} 
 }
 
 function ivrss_deactivation() 
 {
-
+	// No action required.
 }
 
 function ivrss_add_javascript_files() 
 {
 	if (!is_admin())
 	{
-		wp_enqueue_script( 'image-vertical-reel-scroll-slideshow', get_option('siteurl').'/wp-content/plugins/image-vertical-reel-scroll-slideshow/image-vertical-reel-scroll-slideshow.js');
+		wp_enqueue_script( 'image-vertical-reel-scroll-slideshow', WP_ivrss_PLUGIN_URL.'/image-vertical-reel-scroll-slideshow.js');
 	}	
 }
 
+function ivrss_textdomain() 
+{
+	  load_plugin_textdomain( 'vertical-reel', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+}
+
+add_action('plugins_loaded', 'ivrss_textdomain');
 add_action('admin_menu', 'ivrss_add_to_menu');
 add_action('wp_enqueue_scripts', 'ivrss_add_javascript_files');
 add_action("plugins_loaded", "ivrss_init");

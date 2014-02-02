@@ -2,8 +2,8 @@
   <div class="form-wrap">
     <div id="icon-edit" class="icon32 icon32-posts-post"><br>
     </div>
-    <h2><?php echo WP_ivrss_TITLE; ?></h2>
-	<h3>Widget setting</h3>
+    <h2><?php _e('Image vertical reel scroll slideshow', 'vertical-reel'); ?></h2>
+	<h3><?php _e('Widget Setting', 'vertical-reel'); ?></h3>
     <?php
 	$ivrss_title = get_option('ivrss_title');
 	$ivrss_scrollercount = get_option('ivrss_scrollercount');
@@ -11,7 +11,7 @@
 	$ivrss_random = get_option('ivrss_random');
 	$ivrss_type = get_option('ivrss_type');
 	
-	if (@$_POST['ivrss_submit']) 
+	if (isset($_POST['ivrss_submit'])) 
 	{
 		//	Just security thingy that wordpress offers us
 		check_admin_referer('ivrss_form_setting');
@@ -30,31 +30,31 @@
 		
 		?>
 		<div class="updated fade">
-			<p><strong>Details successfully updated.</strong></p>
+			<p><strong><?php _e('Details successfully updated.', 'vertical-reel'); ?></strong></p>
 		</div>
 		<?php
 	}
 	?>
-	<script language="JavaScript" src="<?php echo get_option('siteurl'); ?>/wp-content/plugins/image-vertical-reel-scroll-slideshow/pages/setting.js"></script>
+	<script language="JavaScript" src="<?php echo WP_ivrss_PLUGIN_URL; ?>/pages/setting.js"></script>
     <form name="ivrss_form" method="post" action="">
       
-	  <label for="tag-title">Enter widget title</label>
+	  <label for="tag-title"><?php _e('Enter widget title', 'vertical-reel'); ?></label>
       <input name="ivrss_title" id="ivrss_title" type="text" value="<?php echo $ivrss_title; ?>" size="80" />
-      <p>Enter widget title, Only for widget.</p>
+      <p><?php _e('Enter widget title, Only for widget.', 'vertical-reel'); ?></p>
       
-	  <label for="tag-width">Display image count (Only number)</label>
+	  <label for="tag-width"><?php _e('Display image count (Only number)', 'vertical-reel'); ?></label>
       <input name="ivrss_scrollercount" id="ivrss_scrollercount" type="text" value="<?php echo $ivrss_scrollercount; ?>" />
-      <p>No of images you want to display at the same time. (Example: 2)</p>
+      <p><?php _e('No of images you want to display at the same time.', 'vertical-reel'); ?> (Example: 2)</p>
       
-	  <label for="tag-height">Height of each image</label>
+	  <label for="tag-height"><?php _e('Height of each image', 'vertical-reel'); ?></label>
       <input name="ivrss_scrollerheight" id="ivrss_scrollerheight" type="text" value="<?php echo $ivrss_scrollerheight; ?>" />
-      <p>Height of each images in the gallery. (Example: 170)</p>
+      <p><?php _e('Height of each images in the gallery.', 'vertical-reel'); ?> (Example: 170)</p>
 	  
-	  <label for="tag-height">Random order</label>
+	  <label for="tag-height"><?php _e('Random order', 'vertical-reel'); ?></label>
       <input name="ivrss_random" id="ivrss_random" type="text" value="<?php echo $ivrss_random; ?>" />
-      <p>Image display random order. (Example: YES or NO)</p>
+      <p><?php _e('Image display random order.', 'vertical-reel'); ?> (Example: YES or NO)</p>
       
-	  <label for="tag-height">Select your gallery group (Gallery  Type)</label>
+	  <label for="tag-height"><?php _e('Select your gallery group (Gallery  Type)', 'vertical-reel'); ?></label>
       <!--<input name="ivrss_type" id="ivrss_type" type="text" value="<?php //echo $ivrss_type; ?>" />-->
 	  <select name="ivrss_type" id="ivrss_type">
         <option value='GROUP1' <?php if($ivrss_type=='GROUP1') { echo 'selected' ; } ?>>Group1</option>
@@ -70,13 +70,17 @@
 		<option value='Widget' <?php if($ivrss_type=='Widget') { echo 'selected' ; } ?>>Widget</option>
 		<option value='sample' <?php if($ivrss_type=='Sample') { echo 'selected' ; } ?>>Sample</option>
       </select>
-      <p>This field is to group the images. Select your group name to fetch the images for widget.</p>
+      <p><?php _e('This field is to group the images. Select your group name to fetch the images for widget.', 'vertical-reel'); ?></p>
       
-	  <input name="ivrss_submit" id="ivrss_submit" class="button-primary" value="Submit" type="submit" />
-	  <input name="publish" lang="publish" class="button-primary" onclick="ivrss_redirect()" value="Cancel" type="button" />
-        <input name="Help" lang="publish" class="button-primary" onclick="ivrss_help()" value="Help" type="button" />
+	  <input name="ivrss_submit" id="ivrss_submit" class="button-primary" value="<?php _e('Submit', 'vertical-reel'); ?>" type="submit" />
+	  <input name="publish" lang="publish" class="button-primary" onclick="ivrss_redirect()" value="<?php _e('Cancel', 'vertical-reel'); ?>" type="button" />
+        <input name="Help" lang="publish" class="button-primary" onclick="ivrss_help()" value="<?php _e('Help', 'vertical-reel'); ?>" type="button" />
 	  <?php wp_nonce_field('ivrss_form_setting'); ?>
     </form>
   </div>
-  <br /><p class="description"><?php echo WP_ivrss_LINK; ?></p>
+  <br />	
+	<p class="description">
+	<?php _e('Check official website for more information', 'vertical-reel'); ?>
+	<a target="_blank" href="<?php echo WP_ivrss_FAV; ?>"><?php _e('click here', 'vertical-reel'); ?></a>
+	</p>
 </div>

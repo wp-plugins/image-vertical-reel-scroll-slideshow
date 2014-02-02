@@ -13,7 +13,7 @@ $result = $wpdb->get_var($sSql);
 
 if ($result != '1')
 {
-	?><div class="error fade"><p><strong>Oops, selected details doesn't exist.</strong></p></div><?php
+	?><div class="error fade"><p><strong><?php _e('Oops, selected details doesnt exist.', 'vertical-reel'); ?></strong></p></div><?php
 }
 else
 {
@@ -52,14 +52,14 @@ if (isset($_POST['ivrss_form_submit']) && $_POST['ivrss_form_submit'] == 'yes')
 	$form['ivrss_path'] = isset($_POST['ivrss_path']) ? $_POST['ivrss_path'] : '';
 	if ($form['ivrss_path'] == '')
 	{
-		$ivrss_errors[] = __('Please enter the image path.', WP_ivrss_UNIQUE_NAME);
+		$ivrss_errors[] = __('Please enter the image path.', 'vertical-reel');
 		$ivrss_error_found = TRUE;
 	}
 
 	$form['ivrss_link'] = isset($_POST['ivrss_link']) ? $_POST['ivrss_link'] : '';
 	if ($form['ivrss_link'] == '')
 	{
-		$ivrss_errors[] = __('Please enter the target link.', WP_ivrss_UNIQUE_NAME);
+		$ivrss_errors[] = __('Please enter the target link.', 'vertical-reel');
 		$ivrss_error_found = TRUE;
 	}
 	
@@ -83,55 +83,57 @@ if (isset($_POST['ivrss_form_submit']) && $_POST['ivrss_form_submit'] == 'yes')
 				`ivrss_type` = %s
 				WHERE ivrss_id = %d
 				LIMIT 1",
-				array($form['ivrss_path'], $form['ivrss_link'], $form['ivrss_target'], $form['ivrss_title'], $form['ivrss_order'], $form['ivrss_status'], $form['ivrss_type'], $did)
+				array($form['ivrss_path'], $form['ivrss_link'], $form['ivrss_target'], $form['ivrss_title'], $form['ivrss_order'], 
+							$form['ivrss_status'], $form['ivrss_type'], $did)
 			);
 		$wpdb->query($sSql);
 		
-		$ivrss_success = 'Image details was successfully updated.';
+		$ivrss_success = __('Image details was successfully updated.', 'vertical-reel');
 	}
 }
 
 if ($ivrss_error_found == TRUE && isset($ivrss_errors[0]) == TRUE)
 {
-?>
-  <div class="error fade">
-    <p><strong><?php echo $ivrss_errors[0]; ?></strong></p>
-  </div>
-  <?php
+	?>
+	<div class="error fade">
+		<p><strong><?php echo $ivrss_errors[0]; ?></strong></p>
+	</div>
+	<?php
 }
 if ($ivrss_error_found == FALSE && strlen($ivrss_success) > 0)
 {
-?>
-  <div class="updated fade">
-    <p><strong><?php echo $ivrss_success; ?> <a href="<?php echo get_option('siteurl'); ?>/wp-admin/admin.php?page=image-vertical-reel-scroll-slideshow">Click here</a> to view the details</strong></p>
-  </div>
-  <?php
+	?>
+	<div class="updated fade">
+		<p><strong><?php echo $ivrss_success; ?> 
+		<a href="<?php echo WP_ivrss_ADMIN_URL; ?>"><?php _e('Click here to view the details', 'vertical-reel'); ?></a></strong></p>
+	</div>
+	<?php
 }
 ?>
-<script language="JavaScript" src="<?php echo get_option('siteurl'); ?>/wp-content/plugins/image-vertical-reel-scroll-slideshow/pages/setting.js"></script>
+<script language="JavaScript" src="<?php echo WP_ivrss_PLUGIN_URL; ?>/pages/setting.js"></script>
 <div class="form-wrap">
 	<div id="icon-edit" class="icon32 icon32-posts-post"><br></div>
-	<h2><?php echo WP_ivrss_TITLE; ?></h2>
+	<h2><?php _e('Image vertical reel scroll slideshow', 'vertical-reel'); ?></h2>
 	<form name="ivrss_form" method="post" action="#" onsubmit="return ivrss_submit()"  >
-      <h3>Update image details</h3>
-      <label for="tag-image">Enter image path</label>
+      <h3><?php _e('Update image details', 'vertical-reel'); ?></h3>
+      <label for="tag-image"><?php _e('Enter image path', 'vertical-reel'); ?></label>
       <input name="ivrss_path" type="text" id="ivrss_path" value="<?php echo $form['ivrss_path']; ?>" size="125" />
-      <p>Where is the picture located on the internet</p>
-      <label for="tag-link">Enter target link</label>
+      <p><?php _e('Where is the picture located on the internet', 'vertical-reel'); ?></p>
+      <label for="tag-link"><?php _e('Enter target link', 'vertical-reel'); ?></label>
       <input name="ivrss_link" type="text" id="ivrss_link" value="<?php echo $form['ivrss_link']; ?>" size="125" />
-      <p>When someone clicks on the picture, where do you want to send them</p>
-      <label for="tag-target">Enter target option</label>
+      <p><?php _e('When someone clicks on the picture, where do you want to send them', 'vertical-reel'); ?></p>
+      <label for="tag-target"><?php _e('Enter target option', 'vertical-reel'); ?></label>
       <select name="ivrss_target" id="ivrss_target">
         <option value='_blank' <?php if($form['ivrss_target']=='_blank') { echo 'selected' ; } ?>>_blank</option>
         <option value='_parent' <?php if($form['ivrss_target']=='_parent') { echo 'selected' ; } ?>>_parent</option>
         <option value='_self' <?php if($form['ivrss_target']=='_self') { echo 'selected' ; } ?>>_self</option>
         <option value='_new' <?php if($form['ivrss_target']=='_new') { echo 'selected' ; } ?>>_new</option>
       </select>
-      <p>Do you want to open link in new window?</p>
-      <label for="tag-title">Enter image reference</label>
+      <p><?php _e('Do you want to open link in new window?', 'vertical-reel'); ?></p>
+      <label for="tag-title"><?php _e('Enter image reference', 'vertical-reel'); ?></label>
       <input name="ivrss_title" type="text" id="ivrss_title" value="<?php echo $form['ivrss_title']; ?>" size="125" />
-      <p>Enter image reference. This is only for reference.</p>
-      <label for="tag-select-gallery-group">Select gallery type</label>
+      <p><?php _e('Enter image reference. This is only for reference.', 'vertical-reel'); ?></p>
+      <label for="tag-select-gallery-group"><?php _e('Select gallery type', 'vertical-reel'); ?></label>
       <select name="ivrss_type" id="ivrss_type">
         <option value='GROUP1' <?php if($form['ivrss_type']=='GROUP1') { echo 'selected' ; } ?>>Group1</option>
         <option value='GROUP2' <?php if($form['ivrss_type']=='GROUP2') { echo 'selected' ; } ?>>Group2</option>
@@ -146,25 +148,28 @@ if ($ivrss_error_found == FALSE && strlen($ivrss_success) > 0)
 		<option value='Widget' <?php if($form['ivrss_type']=='Widget') { echo 'selected' ; } ?>>Widget</option>
 		<option value='sample' <?php if($form['ivrss_type']=='Sample') { echo 'selected' ; } ?>>Sample</option>
       </select>
-      <p>This is to group the images. Select your slideshow group. </p>
-      <label for="tag-display-status">Display status</label>
+      <p><?php _e('This is to group the images. Select your slideshow group.', 'vertical-reel'); ?></p>
+      <label for="tag-display-status"><?php _e('Display status', 'vertical-reel'); ?></label>
       <select name="ivrss_status" id="ivrss_status">
         <option value='YES' <?php if($form['ivrss_status']=='YES') { echo 'selected' ; } ?>>Yes</option>
         <option value='NO' <?php if($form['ivrss_status']=='NO') { echo 'selected' ; } ?>>No</option>
       </select>
-      <p>Do you want the picture to show in your galler?</p>
-      <label for="tag-display-order">Display order</label>
+      <p><?php _e('Do you want the picture to show in your galler?', 'vertical-reel'); ?></p>
+      <label for="tag-display-order"><?php _e('Display order', 'vertical-reel'); ?></label>
       <input name="ivrss_order" type="text" id="ivrss_order" size="10" value="<?php echo $form['ivrss_order']; ?>" maxlength="3" />
-      <p>What order should the picture be played in. should it come 1st, 2nd, 3rd, etc.</p>
+      <p><?php _e('What order should the picture be played in. should it come 1st, 2nd, 3rd, etc.', 'vertical-reel'); ?></p>
       <input name="ivrss_id" id="ivrss_id" type="hidden" value="">
       <input type="hidden" name="ivrss_form_submit" value="yes"/>
       <p class="submit">
-        <input name="publish" lang="publish" class="button-primary" value="Update Details" type="submit" />
-        <input name="publish" lang="publish" class="button-primary" onclick="ivrss_redirect()" value="Cancel" type="button" />
-        <input name="Help" lang="publish" class="button-primary" onclick="ivrss_help()" value="Help" type="button" />
+        <input name="publish" lang="publish" class="button-primary" value="<?php _e('Update Details', 'vertical-reel'); ?>" type="submit" />
+        <input name="publish" lang="publish" class="button-primary" onclick="ivrss_redirect()" value="<?php _e('Cancel', 'vertical-reel'); ?>" type="button" />
+        <input name="Help" lang="publish" class="button-primary" onclick="ivrss_help()" value="<?php _e('Help', 'vertical-reel'); ?>" type="button" />
       </p>
 	  <?php wp_nonce_field('ivrss_form_edit'); ?>
     </form>
 </div>
-<p class="description"><?php echo WP_ivrss_LINK; ?></p>
+	<p class="description">
+		<?php _e('Check official website for more information', 'vertical-reel'); ?>
+		<a target="_blank" href="<?php echo WP_ivrss_FAV; ?>"><?php _e('click here', 'vertical-reel'); ?></a>
+	</p>
 </div>
