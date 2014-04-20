@@ -1,3 +1,4 @@
+<?php if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) { die('You are not allowed to call this page directly.'); } ?>
 <div class="wrap">
 <?php
 $ivrss_errors = array();
@@ -92,11 +93,11 @@ if ($ivrss_error_found == FALSE && strlen($ivrss_success) > 0)
 	<form name="ivrss_form" method="post" action="#" onsubmit="return ivrss_submit()"  >
       <h3><?php _e('Add new image details', 'vertical-reel'); ?></h3>
       <label for="tag-image"><?php _e('Enter image path', 'vertical-reel'); ?></label>
-      <input name="ivrss_path" type="text" id="ivrss_path" value="" size="125" />
+      <input name="ivrss_path" type="text" id="ivrss_path" value="" size="100" />
       <p><?php _e('Where is the picture located on the internet', 'vertical-reel'); ?> 
 	  (Ex: http://www.gopiplus.com/work/wp-content/uploads/pluginimages/250x167/250x167_1.jpg)</p>
       <label for="tag-link"><?php _e('Enter target link', 'vertical-reel'); ?></label>
-      <input name="ivrss_link" type="text" id="ivrss_link" value="#" size="125" />
+      <input name="ivrss_link" type="text" id="ivrss_link" value="#" size="100" />
       <p><?php _e('When someone clicks on the picture, where do you want to send them', 'vertical-reel'); ?></p>
       <label for="tag-target"><?php _e('Enter target option', 'vertical-reel'); ?></label>
       <select name="ivrss_target" id="ivrss_target">
@@ -107,7 +108,7 @@ if ($ivrss_error_found == FALSE && strlen($ivrss_success) > 0)
       </select>
       <p><?php _e('Do you want to open link in new window?', 'vertical-reel'); ?></p>
       <label for="tag-title"><?php _e('Enter image reference', 'vertical-reel'); ?></label>
-      <input name="ivrss_title" type="text" id="ivrss_title" value="" size="125" />
+      <input name="ivrss_title" type="text" id="ivrss_title" value="" size="100" />
       <p><?php _e('Enter image reference. This is only for reference.', 'vertical-reel'); ?></p>
       <label for="tag-select-gallery-group"><?php _e('Select gallery type', 'vertical-reel'); ?></label>
       <select name="ivrss_type" id="ivrss_type">

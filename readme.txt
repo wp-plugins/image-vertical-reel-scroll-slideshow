@@ -5,8 +5,8 @@ Author URI: http://www.gopiplus.com/work/2011/05/30/wordpress-plugin-image-verti
 Plugin URI: http://www.gopiplus.com/work/2011/05/30/wordpress-plugin-image-vertical-reel-scroll-slideshow/
 Tags: Vertical, Image, Reel, Scroll, Slideshow, Gallery
 Requires at least: 3.4
-Tested up to: 3.8
-Stable tag: 7.1
+Tested up to: 3.9
+Stable tag: 7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 	
@@ -40,24 +40,6 @@ Image vertical reel scroll slideshow wordpress plugin will create the vertical s
 *   Add directly in the theme 
 
 We have three option to install and configure this Image horizontal reel scroll slideshow plugin. 
-
-http://www.gopiplus.com/work/2011/05/30/wordpress-plugin-image-vertical-reel-scroll-slideshow/
-
-= My other related plugins =
-
-*   [Left right image slideshow gallery](http://www.gopiplus.com/work/2011/04/25/wordpress-plugin-left-right-image-slideshow-gallery/)	
-*   [Wordpress plugin up down image slideshow](http://www.gopiplus.com/work/2011/04/25/wordpress-plugin-up-down-image-slideshow-script/)	
-*   [Information reel](http://www.gopiplus.com/work/2011/04/16/wordpress-plugin-information-reel/)	
-*   [News announcement scroll](http://www.gopiplus.com/work/2011/01/01/news-announcement-scroll/)		
-*   [Continuous rss scrolling](http://www.gopiplus.com/work/2010/09/05/continuous-rss-scrolling/)		
-*   [Continuous announcement scroller](http://www.gopiplus.com/work/2010/09/04/continuous-announcement-scroller/)		
-*   [Vertical scroll recent post](http://www.gopiplus.com/work/2010/07/18/vertical-scroll-recent-post/)		
-*   [Superb slideshow gallery](http://www.gopiplus.com/work/2010/10/10/superb-slideshow-gallery/)		
-*   [Email newsletter](http://www.gopiplus.com/work/2010/09/25/email-newsletter/)			
-		 	
-To see my all plugin : [click here](http://www.gopiplus.com/work/plugin-list/)		
-
-Tags: Horizontal, Image, Reel, Scroll, Slideshow, Gallery	
 
 Check official website for live demo and video tutorial [http://www.gopiplus.com/work/2011/05/30/wordpress-plugin-image-vertical-reel-scroll-slideshow/](http://www.gopiplus.com/work/2011/05/30/wordpress-plugin-image-vertical-reel-scroll-slideshow/)
 
@@ -100,11 +82,16 @@ http://www.gopiplus.com/work/2011/04/25/wordpress-plugin-up-down-image-slideshow
 
 == Screenshots ==
 
-1. Front End Screen http://www.gopiplus.com/work/2011/05/30/wordpress-plugin-image-vertical-reel-scroll-slideshow/
+1. Front End Screen. http://www.gopiplus.com/work/2011/05/30/wordpress-plugin-image-vertical-reel-scroll-slideshow/
 
-2. Admin Screen http://www.gopiplus.com/work/2011/05/30/wordpress-plugin-image-vertical-reel-scroll-slideshow/
+2. Admin Screen. http://www.gopiplus.com/work/2011/05/30/wordpress-plugin-image-vertical-reel-scroll-slideshow/
 
 == Upgrade Notice ==
+
+= 7.2 =
+
+1. Tested up to 3.9
+2. Added data security feature.
 
 = 7.1 =
 
@@ -154,6 +141,11 @@ First version.
 
 == Changelog ==
 
+= 7.2 =
+
+1. Tested up to 3.9
+2. Added data security feature.
+
 = 7.1 =
 
 1. Tested up to 3.8
@@ -163,7 +155,7 @@ Plugin *.po file (vertical-reel.po) available in the languages folder.
 = 7.0 =
 
 Tested upto 3.6
-Added data security issue.
+Added data security feature.
 
 = 6.2 =
 

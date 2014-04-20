@@ -1,3 +1,4 @@
+<?php if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) { die('You are not allowed to call this page directly.'); } ?>
 <?php
 // Form submitted, check the data
 if (isset($_POST['frm_ivrss_display']) && $_POST['frm_ivrss_display'] == 'yes')
@@ -62,7 +63,7 @@ if (isset($_POST['frm_ivrss_display']) && $_POST['frm_ivrss_display'] == 'yes')
         <thead>
           <tr>
             <th class="check-column" scope="row"><input type="checkbox" name="ivrss_group_item[]" /></th>
-			<th scope="col"><?php _e('Type', 'vertical-reel'); ?></th>
+			<th scope="col"><?php _e('Type/Group', 'vertical-reel'); ?></th>
 			<th scope="col"><?php _e('Reference', 'vertical-reel'); ?></th>
             <th scope="col"><?php _e('URL', 'vertical-reel'); ?></th>
 			<th scope="col"><?php _e('Target', 'vertical-reel'); ?></th>
@@ -73,7 +74,7 @@ if (isset($_POST['frm_ivrss_display']) && $_POST['frm_ivrss_display'] == 'yes')
 		<tfoot>
           <tr>
             <th class="check-column" scope="row"><input type="checkbox" name="ivrss_group_item[]" /></th>
-			<th scope="col"><?php _e('Type', 'vertical-reel'); ?></th>
+			<th scope="col"><?php _e('Type/Group', 'vertical-reel'); ?></th>
 			<th scope="col"><?php _e('Reference', 'vertical-reel'); ?></th>
             <th scope="col"><?php _e('URL', 'vertical-reel'); ?></th>
 			<th scope="col"><?php _e('Target', 'vertical-reel'); ?></th>
@@ -95,9 +96,12 @@ if (isset($_POST['frm_ivrss_display']) && $_POST['frm_ivrss_display'] == 'yes')
 						<strong><?php echo esc_html(stripslashes($data['ivrss_type'])); ?></strong>
 						<div class="row-actions">
 						<span class="edit">
-						<a title="Edit" href="<?php echo WP_ivrss_ADMIN_URL; ?>&amp;ac=edit&amp;did=<?php echo $data['ivrss_id']; ?>"><?php _e('Edit', 'vertical-reel'); ?></a> | </span>
+							<a title="Edit" href="<?php echo WP_ivrss_ADMIN_URL; ?>&amp;ac=edit&amp;did=<?php echo $data['ivrss_id']; ?>">
+							<?php _e('Edit', 'vertical-reel'); ?></a> | 
+						</span>
 						<span class="trash">
-						<a onClick="javascript:ivrss_delete('<?php echo $data['ivrss_id']; ?>')" href="javascript:void(0);"><?php _e('Delete', 'vertical-reel'); ?></a></span> 
+							<a onClick="javascript:ivrss_delete('<?php echo $data['ivrss_id']; ?>')" href="javascript:void(0);"><?php _e('Delete', 'vertical-reel'); ?></a>
+						</span> 
 						</div>
 						</td>
 						<td><?php echo esc_html(stripslashes($data['ivrss_title'])); ?></td>
