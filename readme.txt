@@ -5,8 +5,8 @@ Author URI: http://www.gopiplus.com/work/2011/05/30/wordpress-plugin-image-verti
 Plugin URI: http://www.gopiplus.com/work/2011/05/30/wordpress-plugin-image-vertical-reel-scroll-slideshow/
 Tags: Vertical, Image, Reel, Scroll, Slideshow, Gallery
 Requires at least: 3.4
-Tested up to: 3.9
-Stable tag: 7.2
+Tested up to: 4.0
+Stable tag: 7.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 	
@@ -45,8 +45,6 @@ Check official website for live demo and video tutorial [http://www.gopiplus.com
 
 == Installation ==	
 
-= Installation Instruction & Configuration =   	
-
 **Method 1**	
 
 [File upload using ftp](http://www.gopiplus.com/work/2011/05/30/wordpress-plugin-image-vertical-reel-scroll-slideshow/)	 
@@ -59,7 +57,7 @@ Check official website for live demo and video tutorial [http://www.gopiplus.com
 
 [Upload from website admin with ZIP file](http://www.gopiplus.com/work/2011/05/30/wordpress-plugin-image-vertical-reel-scroll-slideshow/)	 	
 
-= Configuration = 
+**Configuration**
 
 We have 3 option to configure this plugin [click here](http://www.gopiplus.com/work/2011/04/25/wordpress-plugin-up-down-image-slideshow-script/)  to see more info.	 	
 
@@ -75,10 +73,7 @@ Q4. How many images I can displays at same time?
 
 Q5. What is "Enter target option" in the image management form?
 
-Click the below link to see answer for all questions!			
 More info : [click to go](http://www.gopiplus.com/work/2011/05/30/wordpress-plugin-image-vertical-reel-scroll-slideshow/)		
-
-http://www.gopiplus.com/work/2011/04/25/wordpress-plugin-up-down-image-slideshow-script/	
 
 == Screenshots ==
 
@@ -87,6 +82,10 @@ http://www.gopiplus.com/work/2011/04/25/wordpress-plugin-up-down-image-slideshow
 2. Admin Screen. http://www.gopiplus.com/work/2011/05/30/wordpress-plugin-image-vertical-reel-scroll-slideshow/
 
 == Upgrade Notice ==
+
+= 7.3 =
+
+1. Tested up to 4.0
 
 = 7.2 =
 
@@ -140,6 +139,10 @@ Target option bug solved.
 First version.	
 
 == Changelog ==
+
+= 7.3 =
+
+1. Tested up to 4.0
 
 = 7.2 =
 
