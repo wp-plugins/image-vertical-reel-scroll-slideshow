@@ -6,7 +6,7 @@ Plugin URI: http://www.gopiplus.com/work/2011/05/30/wordpress-plugin-image-verti
 Tags: Vertical, Image, Reel, Scroll, Slideshow, Gallery
 Requires at least: 3.4
 Tested up to: 4.0
-Stable tag: 7.3
+Stable tag: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 	
@@ -83,6 +83,10 @@ More info : [click to go](http://www.gopiplus.com/work/2011/05/30/wordpress-plug
 
 == Upgrade Notice ==
 
+= 7.4 =
+
+1. Option added to control scrolling speed and delay.
+
 = 7.3 =
 
 1. Tested up to 4.0
@@ -139,6 +143,10 @@ Target option bug solved.
 First version.	
 
 == Changelog ==
+
+= 7.4 =
+
+1. Option added to control scrolling speed and delay.
 
 = 7.3 =
 

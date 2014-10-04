@@ -4,7 +4,7 @@ Plugin Name: Image vertical reel scroll slideshow
 Plugin URI: http://www.gopiplus.com/work/2011/05/30/wordpress-plugin-image-vertical-reel-scroll-slideshow/
 Description: Image vertical reel scroll slideshow wordpress plugin will create the vertical scroll slideshow on the website. This will create the slideshow like reel. The images will scroll one by one from bottom to top. Each slide can be optionally hyper linked.
 Author: Gopi Ramasamy
-Version: 7.3
+Version: 7.4
 Author URI: http://www.gopiplus.com/work/
 Donate link: http://www.gopiplus.com/work/2011/05/30/wordpress-plugin-image-vertical-reel-scroll-slideshow/
 Tags: vertical, image, reel, scroll, slideshow, gallery
@@ -35,11 +35,19 @@ function ivrss()
 	global $wpdb;
 	$ivrss_html = "";
 	$ivrss_js = "";
+	$ivrss_speed = "2";
+	$ivrss_waitseconds = "2";
 	
 	$ivrss_scrollercount = get_option('ivrss_scrollercount');
 	$ivrss_scrollerheight = get_option('ivrss_scrollerheight');
 	$ivrss_type = get_option('ivrss_type');
 	$ivrss_random = get_option('ivrss_random');
+	
+	$ivrss_speed = get_option('ivrss_speed');
+	$ivrss_waitseconds = get_option('ivrss_waitseconds');
+	
+	if(!is_numeric($ivrss_speed)) { $ivrss_speed = 2; }
+	if(!is_numeric($ivrss_waitseconds)) { $ivrss_waitseconds = 2; }
 	
 	if(!is_numeric($ivrss_scrollerheight))
 	{
@@ -110,6 +118,8 @@ function ivrss()
         var ivrss_numScrolls	= '';
         var ivrss_heightOfElm = '<?php echo $ivrss_scrollerheight; ?>';
         var ivrss_numberOfElm = '<?php echo $ivrss_count; ?>';
+		var ivrss_speed = '<?php echo $ivrss_speed; ?>';
+		var ivrss_waitseconds = '<?php echo $ivrss_waitseconds; ?>';
         var ivrss_scrollOn 	= 'true';
         function ivrss_createscroll() 
         {
@@ -172,6 +182,9 @@ function ivrss_install()
 	add_option('ivrss_scrollerheight', "170");
 	add_option('ivrss_random', "YES");
 	add_option('ivrss_type', "GROUP1");
+	
+	add_option( 'ivrss_speed', "2" );
+	add_option( 'ivrss_waitseconds', "2" );
 }
 
 function ivrss_control() 
@@ -223,15 +236,31 @@ function ivrss_shortcode( $atts )
 	$ivrss = "";
 	$ivrss_html = "";
 	$ivrss_js = "";
+	$ivrss_speed = 2;
+	$ivrss_waitseconds = 2;
 	
 	// New code
-	//[ivrss-gallery type="gallery1" display="2" height="170" random="YES"]
+	//[ivrss-gallery type="GROUP1" display="2" height="170" random="YES"]
+	//[ivrss-gallery type="GROUP1" display="2" height="170" random="YES" speed="2" waitseconds="2"]
 	if ( ! is_array( $atts ) ) { return ''; }
 	$ivrss_type = $atts['type'];
 	$ivrss_scrollercount = $atts['display'];
 	$ivrss_scrollerheight = $atts['height'];
 	$ivrss_random = $atts['random'];
+	
+	if(isset($atts['speed']))
+	{
+		$ivrss_speed = $atts['speed'];
+	}
 
+	if(isset($atts['waitseconds']))
+	{
+		$ivrss_waitseconds = $atts['waitseconds'];
+	}
+	
+	if(!is_numeric($ivrss_speed)) { $ivrss_speed = 2; }
+	if(!is_numeric($ivrss_waitseconds)) { $ivrss_waitseconds = 2; }
+	
 	if(!is_numeric(@$ivrss_scrollercount)) { @$ivrss_scrollercount = 2 ;}
 	if(!is_numeric(@$ivrss_scrollerheight)) { @$ivrss_scrollerheight = 100; }
 	
@@ -290,6 +319,8 @@ function ivrss_shortcode( $atts )
 			$ivrss = $ivrss .'var ivrss_numScrolls	= "";' ;
 			$ivrss = $ivrss .'var ivrss_heightOfElm = "'.$ivrss_scrollerheight.'";' ;
 			$ivrss = $ivrss .'var ivrss_numberOfElm = "'.$ivrss_count.'";' ;
+			$ivrss = $ivrss .'var ivrss_speed = "'.$ivrss_speed.'";' ;
+			$ivrss = $ivrss .'var ivrss_waitseconds = "'.$ivrss_waitseconds.'";' ;
 			$ivrss = $ivrss .'var ivrss_scrollOn 	= "true";' ;
 			$ivrss = $ivrss .'function ivrss_createscroll()' ;
 			$ivrss = $ivrss .'{' ;

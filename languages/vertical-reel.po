@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Image vertical reel scroll slideshow 7.1\n"
-"POT-Creation-Date: 2014-08-04 22:34+0800\n"
-"PO-Revision-Date: 2014-08-04 22:34+0800\n"
+"POT-Creation-Date: 2014-10-04 23:33+0800\n"
+"PO-Revision-Date: 2014-10-04 23:33+0800\n"
 "Last-Translator: \n"
 "Language-Team: www.gopiplus.com <www.gopiplus.com>\n"
 "MIME-Version: 1.0\n"
@@ -13,31 +13,31 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../image-vertical-reel-scroll-slideshow.php:180
-#: ../image-vertical-reel-scroll-slideshow.php:317
-#: ../image-vertical-reel-scroll-slideshow.php:318
-#: ../image-vertical-reel-scroll-slideshow.php:326
-#: ../image-vertical-reel-scroll-slideshow.php:331
+#: ../image-vertical-reel-scroll-slideshow.php:193
+#: ../image-vertical-reel-scroll-slideshow.php:348
+#: ../image-vertical-reel-scroll-slideshow.php:349
+#: ../image-vertical-reel-scroll-slideshow.php:357
+#: ../image-vertical-reel-scroll-slideshow.php:362
 #: ../pages/image-management-add.php:92 ../pages/image-management-edit.php:117
 #: ../pages/image-management-show.php:52 ../pages/image-setting.php:6
 msgid "Image vertical reel scroll slideshow"
 msgstr ""
 
-#: ../image-vertical-reel-scroll-slideshow.php:182
+#: ../image-vertical-reel-scroll-slideshow.php:195
 #: ../pages/image-management-add.php:149
 #: ../pages/image-management-edit.php:173
-#: ../pages/image-management-show.php:136 ../pages/image-setting.php:84
+#: ../pages/image-management-show.php:136 ../pages/image-setting.php:102
 msgid "Check official website for more information"
 msgstr ""
 
-#: ../image-vertical-reel-scroll-slideshow.php:183
+#: ../image-vertical-reel-scroll-slideshow.php:196
 #: ../pages/image-management-add.php:150
 #: ../pages/image-management-edit.php:174
-#: ../pages/image-management-show.php:137 ../pages/image-setting.php:85
+#: ../pages/image-management-show.php:137 ../pages/image-setting.php:103
 msgid "click here"
 msgstr ""
 
-#: ../image-vertical-reel-scroll-slideshow.php:308
+#: ../image-vertical-reel-scroll-slideshow.php:339
 msgid "No image availabe for the mentioned group! please check the short code."
 msgstr ""
 
@@ -135,13 +135,13 @@ msgid "Insert Details"
 msgstr ""
 
 #: ../pages/image-management-add.php:142
-#: ../pages/image-management-edit.php:166 ../pages/image-setting.php:77
+#: ../pages/image-management-edit.php:166 ../pages/image-setting.php:95
 msgid "Cancel"
 msgstr ""
 
 #: ../pages/image-management-add.php:143
 #: ../pages/image-management-edit.php:167
-#: ../pages/image-management-show.php:131 ../pages/image-setting.php:78
+#: ../pages/image-management-show.php:131 ../pages/image-setting.php:96
 msgid "Help"
 msgstr ""
 
@@ -214,52 +214,80 @@ msgstr ""
 msgid "Widget Setting"
 msgstr ""
 
-#: ../pages/image-setting.php:34
+#: ../pages/image-setting.php:42
 msgid "Details successfully updated."
 msgstr ""
 
-#: ../pages/image-setting.php:42
+#: ../pages/image-setting.php:50
 msgid "Enter widget title"
 msgstr ""
 
-#: ../pages/image-setting.php:44
+#: ../pages/image-setting.php:52
 msgid "Enter widget title, Only for widget."
 msgstr ""
 
-#: ../pages/image-setting.php:46
+#: ../pages/image-setting.php:54
 msgid "Display image count (Only number)"
 msgstr ""
 
-#: ../pages/image-setting.php:48
+#: ../pages/image-setting.php:56
 msgid "No of images you want to display at the same time."
 msgstr ""
 
-#: ../pages/image-setting.php:50
+#: ../pages/image-setting.php:58
 msgid "Height of each image"
 msgstr ""
 
-#: ../pages/image-setting.php:52
+#: ../pages/image-setting.php:60
 msgid "Height of each images in the gallery."
 msgstr ""
 
-#: ../pages/image-setting.php:54
+#: ../pages/image-setting.php:62
 msgid "Random order"
 msgstr ""
 
-#: ../pages/image-setting.php:56
+#: ../pages/image-setting.php:64
 msgid "Image display random order."
 msgstr ""
 
-#: ../pages/image-setting.php:58
+#: ../pages/image-setting.php:66
 msgid "Select your gallery group (Gallery  Type)"
 msgstr ""
 
-#: ../pages/image-setting.php:74
+#: ../pages/image-setting.php:82
 msgid ""
 "This field is to group the images. Select your group name to fetch the "
 "images for widget."
 msgstr ""
 
-#: ../pages/image-setting.php:76
+#: ../pages/image-setting.php:84
+msgid "Scrolling speed"
+msgstr ""
+
+#: ../pages/image-setting.php:85
+msgid "Slow"
+msgstr ""
+
+#: ../pages/image-setting.php:87
+msgid "Fast"
+msgstr ""
+
+#: ../pages/image-setting.php:88
+msgid "Set how fast you want to scroll."
+msgstr ""
+
+#: ../pages/image-setting.php:90
+msgid "Seconds to wait"
+msgstr ""
+
+#: ../pages/image-setting.php:92
+msgid "How many seconds you want the wait to scroll"
+msgstr ""
+
+#: ../pages/image-setting.php:92
+msgid "Example"
+msgstr ""
+
+#: ../pages/image-setting.php:94
 msgid "Submit"
 msgstr ""

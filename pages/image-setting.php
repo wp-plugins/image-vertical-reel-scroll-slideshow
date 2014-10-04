@@ -12,6 +12,9 @@
 	$ivrss_random = get_option('ivrss_random');
 	$ivrss_type = get_option('ivrss_type');
 	
+	$ivrss_speed = get_option('ivrss_speed');
+	$ivrss_waitseconds = get_option('ivrss_waitseconds');
+	
 	if (isset($_POST['ivrss_submit'])) 
 	{
 		//	Just security thingy that wordpress offers us
@@ -22,6 +25,9 @@
 		$ivrss_scrollerheight = stripslashes($_POST['ivrss_scrollerheight']);
 		$ivrss_random = stripslashes($_POST['ivrss_random']);
 		$ivrss_type = stripslashes($_POST['ivrss_type']);
+		
+		$ivrss_speed = stripslashes($_POST['ivrss_speed']);
+		$ivrss_waitseconds = stripslashes($_POST['ivrss_waitseconds']);
 
 		update_option('ivrss_title', $ivrss_title );
 		update_option('ivrss_scrollercount', $ivrss_scrollercount );
@@ -29,6 +35,8 @@
 		update_option('ivrss_random', $ivrss_random );
 		update_option('ivrss_type', $ivrss_type );
 		
+		update_option('ivrss_speed', $ivrss_speed );
+		update_option('ivrss_waitseconds', $ivrss_waitseconds );
 		?>
 		<div class="updated fade">
 			<p><strong><?php _e('Details successfully updated.', 'vertical-reel'); ?></strong></p>
@@ -72,6 +80,16 @@
 		<option value='sample' <?php if($ivrss_type=='Sample') { echo 'selected' ; } ?>>Sample</option>
       </select>
       <p><?php _e('This field is to group the images. Select your group name to fetch the images for widget.', 'vertical-reel'); ?></p>
+	  
+		<label for="ivrss_speed"><?php _e( 'Scrolling speed', 'vertical-reel' ); ?></label>
+		<?php _e( 'Slow', 'vertical-reel' ); ?> 
+		<input name="ivrss_speed" type="range" value="<?php echo $ivrss_speed; ?>"  id="ivrss_speed" min="1" max="10" /> 
+		<?php _e( 'Fast', 'vertical-reel' ); ?> 
+		<p><?php _e( 'Set how fast you want to scroll.', 'vertical-reel' ); ?></p>
+		
+		<label for="ivrss_waitseconds"><?php _e( 'Seconds to wait', 'vertical-reel' ); ?></label>
+		<input name="ivrss_waitseconds" type="text" value="<?php echo $ivrss_waitseconds; ?>" id="ivrss_waitseconds" maxlength="4" />
+		<p><?php _e( 'How many seconds you want the wait to scroll', 'vertical-reel' ); ?> (<?php _e( 'Example', 'vertical-reel' ); ?>: 5)</p>
       
 	  <input name="ivrss_submit" id="ivrss_submit" class="button-primary" value="<?php _e('Submit', 'vertical-reel'); ?>" type="submit" />
 	  <input name="publish" lang="publish" class="button-primary" onclick="ivrss_redirect()" value="<?php _e('Cancel', 'vertical-reel'); ?>" type="button" />

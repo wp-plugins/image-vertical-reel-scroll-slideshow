@@ -31,7 +31,8 @@ function ivrss_scroll() {
 			}
 		}
 	} else {
-		setTimeout("ivrss_scroll();", 10);
+		var speed = 60 - ( ivrss_speed * 10 );
+		setTimeout("ivrss_scroll();", speed);
 	}
 }
 
@@ -65,5 +66,5 @@ function ivrss_content() {
 	ivrss_numScrolls 	= ivrss_array.length;
 	ivrss_obj.scrollTop 	= '0';
 	// start scrolling
-	setTimeout("ivrss_scroll();", 2000);
+	setTimeout("ivrss_scroll();", ivrss_waitseconds * 1000);
 }
