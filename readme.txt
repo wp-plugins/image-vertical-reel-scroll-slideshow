@@ -5,8 +5,8 @@ Author URI: http://www.gopiplus.com/work/2011/05/30/wordpress-plugin-image-verti
 Plugin URI: http://www.gopiplus.com/work/2011/05/30/wordpress-plugin-image-vertical-reel-scroll-slideshow/
 Tags: Vertical, Image, Reel, Scroll, Slideshow, Gallery
 Requires at least: 3.4
-Tested up to: 4.1
-Stable tag: 7.5
+Tested up to: 4.2.2
+Stable tag: 7.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 	
@@ -83,6 +83,10 @@ More info : [click to go](http://www.gopiplus.com/work/2011/05/30/wordpress-plug
 
 == Upgrade Notice ==
 
+= 7.6 =
+
+1. Tested up to 4.2.2
+
 = 7.5 =
 
 1. Tested up to 4.1
@@ -147,6 +151,10 @@ Target option bug solved.
 First version.	
 
 == Changelog ==
+
+= 7.6 =
+
+1. Tested up to 4.2.2
 
 = 7.5 =
 
