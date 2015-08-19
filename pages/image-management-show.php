@@ -4,6 +4,7 @@
 if (isset($_POST['frm_ivrss_display']) && $_POST['frm_ivrss_display'] == 'yes')
 {
 	$did = isset($_GET['did']) ? $_GET['did'] : '0';
+	if(!is_numeric($did)) { die('<p>Are you sure you want to do this?</p>'); }
 	
 	$ivrss_success = '';
 	$ivrss_success_msg = FALSE;
@@ -62,7 +63,7 @@ if (isset($_POST['frm_ivrss_display']) && $_POST['frm_ivrss_display'] == 'yes')
       <table width="100%" class="widefat" id="straymanage">
         <thead>
           <tr>
-            <th class="check-column" scope="row"><input type="checkbox" name="ivrss_group_item[]" /></th>
+            <th class="check-column" scope="row" style="padding: 8px 2px;"><input type="checkbox" name="ivrss_group_item[]" /></th>
 			<th scope="col"><?php _e('Type/Group', 'vertical-reel'); ?></th>
 			<th scope="col"><?php _e('Reference', 'vertical-reel'); ?></th>
             <th scope="col"><?php _e('URL', 'vertical-reel'); ?></th>
@@ -73,7 +74,7 @@ if (isset($_POST['frm_ivrss_display']) && $_POST['frm_ivrss_display'] == 'yes')
         </thead>
 		<tfoot>
           <tr>
-            <th class="check-column" scope="row"><input type="checkbox" name="ivrss_group_item[]" /></th>
+            <th class="check-column" scope="row" style="padding: 8px 2px;"><input type="checkbox" name="ivrss_group_item[]" /></th>
 			<th scope="col"><?php _e('Type/Group', 'vertical-reel'); ?></th>
 			<th scope="col"><?php _e('Reference', 'vertical-reel'); ?></th>
             <th scope="col"><?php _e('URL', 'vertical-reel'); ?></th>

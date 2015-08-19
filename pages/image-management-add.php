@@ -87,17 +87,46 @@ if ($ivrss_error_found == FALSE && strlen($ivrss_success) > 0)
 	}
 ?>
 <script language="JavaScript" src="<?php echo WP_ivrss_PLUGIN_URL; ?>/pages/setting.js"></script>
+<script type="text/javascript">
+jQuery(document).ready(function($){
+    $('#upload-btn').click(function(e) {
+        e.preventDefault();
+        var image = wp.media({ 
+            title: 'Upload Image',
+            // mutiple: true if you want to upload multiple files at once
+            multiple: false
+        }).open()
+        .on('select', function(e){
+            // This will return the selected image from the Media Uploader, the result is an object
+            var uploaded_image = image.state().get('selection').first();
+            // We convert uploaded_image to a JSON object to make accessing it easier
+            // Output to the console uploaded_image
+            console.log(uploaded_image);
+            var ivrss_path = uploaded_image.toJSON().url;
+			var ivrss_title = uploaded_image.toJSON().title;
+            // Let's assign the url value to the input field
+            $('#ivrss_path').val(ivrss_path);
+			$('#ivrss_title').val(ivrss_title);
+        });
+    });
+});
+</script>
+<?php
+wp_enqueue_script('jquery'); // jQuery
+wp_enqueue_media(); // This will enqueue the Media Uploader script
+?>
 <div class="form-wrap">
 	<div id="icon-edit" class="icon32 icon32-posts-post"><br></div>
 	<h2><?php _e('Image vertical reel scroll slideshow', 'vertical-reel'); ?></h2>
 	<form name="ivrss_form" method="post" action="#" onsubmit="return ivrss_submit()"  >
       <h3><?php _e('Add new image details', 'vertical-reel'); ?></h3>
       <label for="tag-image"><?php _e('Enter image path', 'vertical-reel'); ?></label>
-      <input name="ivrss_path" type="text" id="ivrss_path" value="" size="100" />
+      <input name="ivrss_path" type="text" id="ivrss_path" value="" size="80" />
+	  <input type="button" name="upload-btn" id="upload-btn" class="button-secondary" value="Upload Image">
       <p><?php _e('Where is the picture located on the internet', 'vertical-reel'); ?> 
 	  (Ex: http://www.gopiplus.com/work/wp-content/uploads/pluginimages/250x167/250x167_1.jpg)</p>
       <label for="tag-link"><?php _e('Enter target link', 'vertical-reel'); ?></label>
-      <input name="ivrss_link" type="text" id="ivrss_link" value="#" size="100" />
+      <input name="ivrss_link" type="text" id="ivrss_link" value="#" size="80" />
       <p><?php _e('When someone clicks on the picture, where do you want to send them', 'vertical-reel'); ?></p>
       <label for="tag-target"><?php _e('Enter target option', 'vertical-reel'); ?></label>
       <select name="ivrss_target" id="ivrss_target">
@@ -108,7 +137,7 @@ if ($ivrss_error_found == FALSE && strlen($ivrss_success) > 0)
       </select>
       <p><?php _e('Do you want to open link in new window?', 'vertical-reel'); ?></p>
       <label for="tag-title"><?php _e('Enter image reference', 'vertical-reel'); ?></label>
-      <input name="ivrss_title" type="text" id="ivrss_title" value="" size="100" />
+      <input name="ivrss_title" type="text" id="ivrss_title" value="" size="80" />
       <p><?php _e('Enter image reference. This is only for reference.', 'vertical-reel'); ?></p>
       <label for="tag-select-gallery-group"><?php _e('Select gallery type', 'vertical-reel'); ?></label>
       <select name="ivrss_type" id="ivrss_type">
@@ -133,7 +162,7 @@ if ($ivrss_error_found == FALSE && strlen($ivrss_success) > 0)
       </select>
       <p><?php _e('Do you want the picture to show in your galler?', 'vertical-reel'); ?></p>
       <label for="tag-display-order"><?php _e('Display order', 'vertical-reel'); ?></label>
-      <input name="ivrss_order" type="text" id="ivrss_order" size="10" value="" maxlength="3" />
+      <input name="ivrss_order" type="text" id="ivrss_order" size="10" value="1" maxlength="3" />
       <p><?php _e('What order should the picture be played in. should it come 1st, 2nd, 3rd, etc.', 'vertical-reel'); ?></p>
       <input name="ivrss_id" id="ivrss_id" type="hidden" value="">
       <input type="hidden" name="ivrss_form_submit" value="yes"/>
